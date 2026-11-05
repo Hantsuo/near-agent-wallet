@@ -10,40 +10,45 @@ Rules require three things: a public repo, a public demo post on X tagging
 |---|---|
 | Project name | Blast Radius Zero — Agent Wallet Edition |
 | Team size | Solo builder |
-| Tracks | 06 AI Security & Defense (optionally 07 Agent Economy) |
+| Tracks | 06 AI Security & Defense |
 | Repository | https://github.com/Hantsuo/near-agent-wallet |
 | Demo post | _X post URL_ |
 | NEAR wallet | `6594532b2ab4a31d4a11cc7c0f0bfe0f26ac6284621a23ec3a6e375d983f60ae` (implicit account, mainnet) |
 
 ## What did you build (20–2000 chars)
 
-Blast Radius Zero is a policy engine that lets an AI agent hold and spend NEAR
-without giving it the keys. The agent may only propose an `Intent`; a pure,
-clock-injected policy engine decides allow / approval / deny against per-tx
-caps, a rolling 24h budget, a velocity limit, a recipient allowlist, an
-approval TTL and a median-amount spike detector. Approved intents are written to
-an append-only JSONL ledger that doubles as the replay guard, so a restarted
-agent cannot pay the same intent twice. The signing key never enters the agent
-process: the repo emits a canonical envelope and its SHA-256 digest, and
-`near-cli` signs it on the ops box. Nine attack scenarios — one-shot drain, six
-sub-cap transfers in a minute, unknown recipient, replay, stale approval, kill
-switch, value spike — are asserted in a stdlib-only test suite.
+Blast Radius Zero is the decision layer between an AI agent and a wallet. The
+agent can only propose an `Intent`; a pure, clock-injected policy engine decides
+allow / approval / deny against a per-transaction cap, a rolling 24-hour budget, a
+velocity limit, a recipient allowlist, an approval TTL and a median-spike anomaly
+check computed from the wallet's own history. Approved intents are written to an
+append-only ledger that doubles as the replay guard, so a restarted agent cannot
+pay the same intent twice. The signing key lives outside the agent process: the
+repo emits a canonical envelope and its SHA-256 digest, and a separate signer pays.
+
+Eight attacks are one click each in a zero-dependency browser demo: drain, split
+transfer, unknown recipient, above-threshold payment, replay, stale approval,
+value spike, kill switch. Four of them — velocity, spike, TTL, replay — are the
+ones a plain spending cap does not catch. The whole demo runs on the standard
+library: `python demo/server.py`, no install.
 
 ## Demo post draft (X)
 
 > Built for @NEARProtocol #NEARHackathon — track 06, AI Security & Defense.
 >
-> Blast Radius Zero: an agent that holds a NEAR wallet and still cannot drain it.
-> Nine attacks, all stopped or escalated: drain, split transfer, replay, stale
-> approval, value spike, kill switch.
+> An agent that holds a NEAR wallet and still cannot drain it.
 >
-> Stdlib only, tests in the repo. https://github.com/Hantsuo/near-agent-wallet
+> 8 attacks, one click each: drain, split transfer, unknown recipient, replay,
+> stale approval, 4.5 NEAR after a 0.5 median, kill switch. Each one is stopped
+> or sent to a human.
 >
-> One idea: give the agent money, never the key.
+> No pip install. python demo/server.py
+> https://github.com/Hantsuo/near-agent-wallet
 
 ## Before submitting
 
-- [ ] repo is public and the README renders
-- [ ] `python -m unittest discover -s tests` passes on a clean clone
+- [x] repo is public and the README renders
+- [x] `python -m unittest discover -s tests` passes on a clean clone
+- [x] demo runs with no dependencies and is screenshot in the README
 - [ ] demo post published and public
-- [ ] wallet address filled in (testnet is fine)
+- [ ] wallet address filled in (done above)
