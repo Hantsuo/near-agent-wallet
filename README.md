@@ -2,9 +2,10 @@
 
 An agent that can hold a wallet and still cannot drain it.
 
-The agent proposes. A policy engine decides. A separate signer pays. Nine attacks
-that would empty a normal agent wallet are stopped or escalated to a human —
-and every decision is replayable from a ledger.
+The agent proposes. A policy engine decides. A separate signer pays. Eight attacks
+that would empty a normal agent wallet are stopped or escalated to a human — and
+every decision is replayable from a ledger, including the ordinary payment that
+must still go through.
 
 ![the demo](docs/ui.png)
 
