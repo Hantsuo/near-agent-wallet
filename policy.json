@@ -1,0 +1,11 @@
+{
+  "per_tx_max": "5",
+  "daily_max": "20",
+  "hourly_count_max": 5,
+  "require_approval_over": "1",
+  "allowlist": ["alice.near", "bob.near", "treasury.near"],
+  "token_allowlist": ["NEAR", "USDC"],
+  "approval_ttl_s": 900,
+  "kill_switch": false,
+  "spike_multiple": "5"
+}

@@ -1,0 +1,12 @@
+# never commit keys
+wallet/
+*.pem
+*.key
+.env
+
+# runtime
+_tmp_ledger.jsonl
+*.jsonl
+__pycache__/
+*.pyc
+.venv/
