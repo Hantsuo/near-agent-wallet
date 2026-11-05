@@ -12,7 +12,7 @@ Rules require three things: a public repo, a public demo post on X tagging
 | Team size | Solo builder |
 | Tracks | 06 AI Security & Defense |
 | Repository | https://github.com/Hantsuo/near-agent-wallet |
-| Demo post | _X post URL_ |
+| Demo post | https://x.com/3rsona/status/2118341423653351778 |
 | NEAR wallet | `6594532b2ab4a31d4a11cc7c0f0bfe0f26ac6284621a23ec3a6e375d983f60ae` (implicit account, mainnet) |
 
 ## What did you build (20–2000 chars)
