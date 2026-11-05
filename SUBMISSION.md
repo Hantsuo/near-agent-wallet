@@ -37,7 +37,7 @@ switch, value spike — are asserted in a stdlib-only test suite.
 > Nine attacks, all stopped or escalated: drain, split transfer, replay, stale
 > approval, value spike, kill switch.
 >
-> Stdlib only, tests in the repo. [repo link]
+> Stdlib only, tests in the repo. https://github.com/Hantsuo/near-agent-wallet
 >
 > One idea: give the agent money, never the key.
 
